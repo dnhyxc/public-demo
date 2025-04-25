@@ -1,0 +1,17 @@
+{
+  "serverInfo": {
+    "host": "101.43.50.15",
+    "username": "root",
+    "port": "22"
+  },
+  "nginxInfo": {
+    "remoteFilePath": "/usr/local/nginx/conf",
+    "restartPath": "/usr/local/nginx/sbin"
+  },
+  "publicDemo": {
+    "name": "html",
+    "localFilePath": "/Users/dnhyxc/Documents/code/public-demo",
+    "remoteFilePath": "/usr/local/nginx/public_demo",
+    "isServer": false
+  }
+}
