@@ -10,7 +10,7 @@
   },
   "publicDemo": {
     "name": "html",
-    "localFilePath": "/Users/dnhyxc/Documents/code/public-demo",
+    "localFilePath": "/Users/dnhyxc/Documents/dnhyxc/public-demo",
     "remoteFilePath": "/usr/local/nginx/public_demo",
     "isServer": false
   }
