@@ -77,7 +77,7 @@ const WeChatVoiceRecorder = () => {
           height: 'auto',
           padding: '12px 20px',
           // backgroundImage: `url(${TestImg})`,
-          background: 'red',
+          background: '#E03A53',
           backgroundSize: 'contain',
           borderRadius: '10px',
           position: 'relative',
@@ -150,7 +150,7 @@ const WeChatVoiceRecorder = () => {
         showSkipButton // 显示跳过按钮
         styles={{
           options: {
-            arrowColor: 'red',
+            arrowColor: '#E03A53',
             primaryColor: '#ff6b6b', // 自定义主色调
             zIndex: 1000, // 确保在最上层
           },
