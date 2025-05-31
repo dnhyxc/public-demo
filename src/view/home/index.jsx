@@ -1,0 +1,146 @@
+import { useState, useRef, useEffect, useCallback } from 'react';
+import './index.css';
+import { Toast, Modal, Popup, Button } from 'antd-mobile';
+import { flushSync } from 'react-dom';
+import Joyride from 'react-joyride';
+// import Guide from './guide';
+// import TestImg from './bg3.jpg';
+// import './guide.css';
+
+const WeChatVoiceRecorder = () => {
+  useEffect(() => {
+    setRun(true);
+  }, []);
+  const [run, setRun] = useState(true);
+  const joyrideRef = useRef(null);
+  const [stepIndex, setStepIndex] = useState(0);
+  const [curIndex, setCurIndex] = useState(0);
+
+  const handleSkip = useCallback(() => {
+    // setRun(false)
+  }, []);
+  const renderContent = () => {
+    return (
+      <div>
+        <h1 style={{ color: '#000' }}>高频功能定制</h1>
+        <h2 style={{ color: '#000' }}>添加常用功能，i定义</h2>
+      </div>
+    );
+  };
+  const tooltipComponent = ({
+    index,
+    step,
+    isLastStep,
+    size,
+    primaryProps,
+    skipProps,
+    tooltipProps,
+  }) => {
+    console.log(
+      '--',
+      index,
+      step.placement.startsWith('top'),
+      step.placement.startsWith('bottom')
+    );
+    return (
+      <div
+        {...tooltipProps}
+        style={{
+          width: '280px',
+          height: 'auto',
+          padding: '12px 20px',
+          // backgroundImage: `url(${TestImg})`,
+          background: 'red',
+          backgroundSize: 'contain',
+          borderRadius: '10px',
+          position: 'relative',
+        }}
+      >
+        {renderContent()}
+        {/* <div
+          style={{
+            position: 'absolute',
+            [step.placement.startsWith('top') ? 'bottom' : 'top']: '-10px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: 0,
+            height: 0,
+            // borderLeft: '10px solid transparent',
+            // borderRight: '10px solid transparent',
+            // borderTop: step.placement.startsWith('top')
+            //   ? '10px solid #E03A53'
+            //   : '10px solid transparent',
+            // borderBottom: step.placement.startsWith('bottom')
+            //   ? '10px solid #E03A53'
+            //   : '10px olid transparent',
+          }}
+        /> */}
+        <div className="toolbox">
+          <div className="toolStep">
+            {index + 1}/{size}
+          </div>
+          <div className="toolRight">
+            <div className="toolSkip" onClick={handleSkip}>
+              {isLastStep ? '知道了' : '跳过'}
+            </div>
+            <Button className="toolNext" {...primaryProps}>
+              {isLastStep ? '开启AI全新体验' : '下一步'}
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const steps = [
+    {
+      target: '.feature-1',
+      placement: 'bottom',
+    },
+    {
+      target: '.feature-2',
+      placement: 'bottom',
+    },
+    {
+      target: '.feature-3',
+      placement: 'bottom',
+    },
+  ];
+
+  return (
+    <div id="mainApp" style={{ height: '100vh' }}>
+      <div className="feature feature-1">功能区域 1</div>
+      <div className="feature feature-2">功能区域 2</div>
+      <div className="feature feature-3">功能区域 3</div>
+      <Joyride
+        steps={steps}
+        run
+        tooltipComponent={tooltipComponent}
+        continuous // 允许连续步骤
+        showProgress // 显示进度
+        showSkipButton // 显示跳过按钮
+        styles={{
+          options: {
+            primaryColor: '#ff6b6b', // 自定义主色调
+            zIndex: 1000, // 确保在最上层
+          },
+        }}
+      />
+
+      <div
+        className="chatFooters"
+        style={{ position: 'fixed', left: 0, bottom: 0, width: '100%' }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <textarea
+            style={{ width: '90%', height: '34px', fontSize: '16px0' }}
+            placeholder="你可以问我任何问题"
+          />
+        </div>
+        <h1>测试</h1>
+      </div>
+    </div>
+  );
+};
+
+export default WeChatVoiceRecorder;
