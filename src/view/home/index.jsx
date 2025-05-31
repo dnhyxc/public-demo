@@ -25,8 +25,7 @@ const WeChatVoiceRecorder = () => {
     );
   };
 
-  const changeArrowSize = () => {
-    const polygon = document.querySelector('.__floater__arrow polygon');
+  const changeArrowSize = (polygon) => {
     if (polygon) {
       // 获取 points 属性值并替换 32 为 20，16 为 10
       const points = polygon
@@ -53,9 +52,14 @@ const WeChatVoiceRecorder = () => {
       step.placement.startsWith('bottom')
     );
 
+    const polygon = document.querySelector('.__floater__arrow polygon');
+
+    // 先执行一次，防止箭头大小为设置成功
+    changeArrowSize(polygon);
+
     useEffect(() => {
       const onScroll = () => {
-        changeArrowSize();
+        changeArrowSize(polygon);
       };
       // 使用防抖处理滚动事件
       window.addEventListener('scroll', onScroll);
@@ -63,10 +67,7 @@ const WeChatVoiceRecorder = () => {
       return () => {
         window.removeEventListener('scroll', onScroll);
       };
-    }, [step.placement]);
-
-    // 初始执行一次，防止箭头大小为设置成功
-    changeArrowSize();
+    }, [step.placement, polygon]);
 
     return (
       <div
