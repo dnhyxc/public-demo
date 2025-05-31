@@ -123,7 +123,7 @@ const WeChatVoiceRecorder = () => {
     {
       target: '.feature-1',
       placement: 'bottom',
-      disableBeacon: true,
+      disableBeacon: true, // 这里是开启自动引导的关键属性
     },
     {
       target: '.feature-2',
