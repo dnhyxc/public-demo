@@ -142,6 +142,7 @@ const WeChatVoiceRecorder = () => {
       <div className="feature feature-3">功能区域 3</div>
       <Joyride
         steps={steps}
+        // 这里如果需要记录用户是否已经完成过引导，就自己根据后端记录的用户完成引导状态手动控制 run 为 false，这样该用户下次进来就不会再显示引导了
         run
         tooltipComponent={tooltipComponent}
         continuous // 允许连续步骤
