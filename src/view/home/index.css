@@ -363,6 +363,7 @@ body {
 
 .feature {
   height: 300px;
+  margin-bottom: 20px;
 }
 
 .__floater__arrow span {

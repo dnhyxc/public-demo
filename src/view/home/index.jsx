@@ -136,7 +136,7 @@ const WeChatVoiceRecorder = () => {
   ];
 
   return (
-    <div id="mainApp" style={{ height: '100vh' }}>
+    <div id="mainApp" style={{ height: '100vh', background: '#fff' }}>
       <div className="feature feature-1">功能区域 1</div>
       <div className="feature feature-2">功能区域 2</div>
       <div className="feature feature-3">功能区域 3</div>
