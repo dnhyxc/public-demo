@@ -42,6 +42,27 @@ const WeChatVoiceRecorder = () => {
       step.placement.startsWith('top'),
       step.placement.startsWith('bottom')
     );
+
+    // TODO: 这里之所以要获取到原来样式再进行修改，是因为这个样式是组件库动态计算的，包括箭头方向，为了不自己去判断箭头，而产生不必要的计算。因此，通过获取原来的属性，然后再根据原来属性进行修改
+    const floaterOpen = document.querySelector('.__floater');
+    if (floaterOpen) {
+      const style = floaterOpen.getAttribute('style');
+      const paddingMatch = style.match(/padding:\s*([^;]+)/);
+      const padding = paddingMatch ? paddingMatch[1] : null;
+      // 将获取到的 padding 中的 16px 替换为 10px
+      floaterOpen.style.padding = padding?.replace(/16px\s+0px\s+0px/g, '10px 0px 0px');
+    }
+
+    const polygon = document.querySelector('.__floater__arrow polygon');
+    if (polygon) {
+      // 获取 points 属性值并替换 32 为 20，16 为 10
+      const points = polygon
+        .getAttribute('points')
+        .replace(/32/g, '20')
+        .replace(/16/g, '10');
+      polygon.setAttribute('points', points);
+    }
+
     return (
       <div
         {...tooltipProps}
@@ -121,6 +142,7 @@ const WeChatVoiceRecorder = () => {
         showSkipButton // 显示跳过按钮
         styles={{
           options: {
+            arrowColor: 'red',
             primaryColor: '#ff6b6b', // 自定义主色调
             zIndex: 1000, // 确保在最上层
           },
