@@ -365,26 +365,10 @@ body {
   height: 300px;
 }
 
-.__floater__arrow svg {
-  /* width: 10px;
-  height: 10px; */
-  /* width: 20px;
-  height: 10px; */
-}
-
 .__floater__arrow span {
-  /* bottom: 0;
-  margin-left: 8px;
-  margin-right: 8px;
-  left: 120px; */
   width: 20px;
 }
 
-.__floater__open {
-  /* padding: 10px 0px 0px !important; */
-}
-
-.__floater__arrow polygon {
-  /* fill: red; */
-  /* points: 20,10 10,0 0,10; */
+.__floater[x-placement='bottom'] {
+  padding: 10px 0 0 !important;
 }
