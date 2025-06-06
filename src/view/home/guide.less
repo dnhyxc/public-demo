@@ -1,0 +1,150 @@
+.guideWrap {
+  width: 300px;
+  padding: 12px 20px 16px 20px;
+  background-size: 100%;
+  border-radius: 10px;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.otherStep {
+  width: 280px;
+}
+:global {
+  .__floater__arrow {
+      // display: none;
+  }
+   .__floater__open {
+      margin: -22px 0;
+  }
+}
+.toolbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .toolStep {
+      font-family: PingFangSC, PingFang SC;
+      font-size: 13px;
+      color: #F5A6B4;
+      line-height: 21px;
+      text-align: left;
+      font-style: normal;
+  }
+
+  .toolRight {
+      display: flex;
+      align-items: center;
+
+      .toolSkip {
+          margin-right: 16px;
+          font-family: PingFangSC, PingFang SC;
+          font-size: 13px;
+          color: #F7D0D7;
+          line-height: 21px;
+          text-align: right;
+          font-style: normal;
+      }
+
+      .toolNext {
+          padding: 2px 12px;
+          background: #FFFFFF;
+          border-radius: 3px;
+          font-family: PingFangSC, PingFang SC;
+          font-size: 14px;
+          color: #C8152D;
+          line-height: 22px;
+          text-align: right;
+          font-style: normal;
+      }
+  }
+}
+
+.stepOne {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .title {
+      margin-bottom: 2px;
+      margin-top: 17px;
+      font-family: PingFangSC, PingFang SC;
+      font-weight: 600;
+      font-size: 18px;
+      color: #FFFFFF;
+      line-height: 26px;
+      text-align: right;
+      font-style: normal;
+  }
+
+  .subTitle {
+      font-family: PingFangSC, PingFang SC;
+      font-size: 14px;
+      margin-bottom: 24px;
+      color: #F5A6B4;
+      line-height: 22px;
+      text-align: right;
+      font-style: normal;
+  }
+
+  .itemWrap {
+      display: flex;
+      width: 100%;
+      margin-bottom: 20px;
+
+      img {
+          width: 40px;
+          height: 40px;
+          margin-right: 12px;
+      }
+
+      .itemTop {
+          font-family: PingFangSC, PingFang SC;
+          font-size: 16px;
+          color: #FFFFFF;
+          line-height: 24px;
+          text-align: left;
+          font-style: normal;
+      }
+
+      .itemBottom {
+          margin-top: 2px;
+          font-family: PingFangSC, PingFang SC;
+          font-size: 13px;
+          color: #F5A6B4;
+          line-height: 21px;
+          text-align: left;
+          font-style: normal;
+      }
+  }
+
+  .itemWrap:last-child {
+      margin-bottom: 32px;
+  }
+}
+
+.stepWrap {
+  width: 100%;
+  margin-bottom: 12px;
+  padding-top: 12px;
+  font-family: PingFangSC, PingFang SC;
+
+  .stepTitle {
+      margin-bottom: 4px;
+      font-weight: 500;
+      font-size: 16px;
+  color: #FFFFFF;
+      line-height: 24px;
+      text-align: left;
+      font-style: normal;
+  }
+
+  .stepSubTitle {
+      margin-bottom: 16px;
+      font-size: 14px;
+      color: #FFE6EB;
+      line-height: 22px;
+      text-align: left;
+      font-style: normal;
+  }
+}
