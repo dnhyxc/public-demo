@@ -18,6 +18,7 @@ const Page4 = lazy(() => import('@/view/page4'));
 const Page5 = lazy(() => import('@/view/page5'));
 const Page6 = lazy(() => import('@/view/page6'));
 const Page7 = lazy(() => import('@/view/page7'));
+const Page8 = lazy(() => import('@/view/page8'));
 
 const lazyLoad = (children: ReactNode, needSpin = true): ReactNode => {
   return (
@@ -59,6 +60,10 @@ const children = [
   {
     path: 'page7',
     element: lazyLoad(<Page7 />),
+  },
+  {
+    path: 'page8',
+    element: lazyLoad(<Page8 />),
   },
   {
     path: '/',
