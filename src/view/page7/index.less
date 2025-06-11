@@ -1,0 +1,120 @@
+.pageContainer {
+  background-color: #fff; // White background for this page
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+    Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+}
+
+.navBar {
+  background-color: #fff;
+  border-bottom: 1px solid #f0f0f0;
+  color: #333;
+  :global(.adm-nav-bar-title) {
+    font-size: 17px; // Slightly larger title
+    font-weight: 500;
+  }
+}
+
+.filtersContainer {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  background-color: #f7f8fa; // Light grey for filter bar
+  border-bottom: 1px solid #f0f0f0;
+  gap: 8px;
+  position: relative; // For badge positioning
+
+  .filterButton {
+    font-size: 13px;
+    padding: 4px 8px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    color: #555;
+  }
+
+  // Style for Dropdown antd-mobile component
+  :global(.adm-dropdown-item-title-text) {
+    font-size: 13px;
+    color: #555;
+  }
+  :global(.adm-dropdown-item-title-arrow) {
+    margin-left: 2px !important;
+  }
+  :global(.adm-dropdown-item) {
+    padding: 4px 8px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 4px;
+  }
+}
+
+.listHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background-color: #fff;
+  font-size: 13px;
+  color: #888;
+
+  .headerItem {
+    flex: 1;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    cursor: pointer;
+
+    &:nth-child(1) {
+      // Name
+      flex-grow: 1.2;
+    }
+    &:nth-child(2) {
+      // Date
+      flex-grow: 0.8;
+      justify-content: center;
+    }
+    &:nth-child(3) {
+      // Type
+      flex-grow: 1;
+      justify-content: flex-end;
+    }
+  }
+}
+
+.anniversaryList {
+  :global(.adm-list-item-content) {
+    padding: 10px 12px; // Adjust padding for list items
+    // border-bottom: 1px solid #f0f0f0;
+  }
+  :global(.adm-list-item:last-child .adm-list-item-content) {
+    border-bottom: none;
+  }
+}
+
+.listItem {
+  font-size: 14px;
+  color: #333;
+
+  .itemName {
+    text-align: left;
+    display: flex;
+    align-items: center;
+  }
+  .nameTag {
+    margin-left: 5px;
+    padding: 0px 4px;
+    font-size: 10px;
+    --border-radius: 2px;
+    --border-width: 0.5px; // Thinner border for small tag
+  }
+  .itemDate {
+    text-align: center;
+    color: #555;
+  }
+  .itemType {
+    text-align: right;
+    color: #555;
+  }
+}
