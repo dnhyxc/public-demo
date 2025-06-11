@@ -1,0 +1,148 @@
+.page2-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f5f6f8;
+  min-height: 100vh;
+
+  .header-tabs {
+    margin-bottom: 20px;
+    span {
+      padding: 10px 20px;
+      margin-right: 10px;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      font-size: 16px;
+      color: #555;
+      &.tab-active {
+        color: #337ab7;
+        border-bottom: 2px solid #337ab7;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .content-wrapper {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  .section-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .main-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .data-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    flex: 1;
+
+    // 设置每个子项占50%宽度，实现两列布局
+    .data-item {
+      background-color: #f5f6f8;
+    }
+
+    .data-item {
+      text-align: center;
+      .data-value {
+        font-size: 28px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 5px;
+      }
+      .data-label {
+        font-size: 14px;
+        color: #666;
+      }
+    }
+  }
+
+  .left-data {
+    align-items: flex-start;
+    .data-item {
+      text-align: left;
+    }
+  }
+
+  .right-data {
+    align-items: flex-end;
+    .data-item {
+      text-align: right;
+    }
+  }
+
+  .chart-section {
+    flex: 1.5; // Give more space to the chart
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; // For positioning annotations
+
+    .chart-annotations {
+      display: flex;
+      justify-content: space-between;
+      width: 80%; // Adjust as needed relative to chart size
+      position: absolute;
+      top: 45%; // Vertically center with respect to the donut
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none; // So they don't interfere with chart tooltip
+
+      .annotation-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 14px;
+        color: #333;
+
+        &.left {
+          position: absolute;
+          left: -40px; // Adjust to position left of the donut
+        }
+
+        &.right {
+          position: absolute;
+          right: -40px; // Adjust to position right of the donut
+        }
+
+        .value {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+// Add some responsiveness if needed
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+  .data-section {
+    margin-bottom: 20px;
+    width: 100%;
+    align-items: center;
+    .data-item {
+      text-align: center;
+    }
+  }
+  .left-data,
+  .right-data {
+    align-items: center;
+  }
+  .chart-section {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}

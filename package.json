@@ -73,6 +73,8 @@
   "dependencies": {
     "antd": "^4.21.5",
     "antd-mobile": "^5.39.0",
+    "echarts": "^5.6.0",
+    "echarts-for-react": "^3.0.2",
     "isomorphic-fetch": "^3.0.0",
     "loadash": "^1.0.0",
     "mobx": "^6.6.0",

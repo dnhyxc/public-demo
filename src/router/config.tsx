@@ -11,7 +11,10 @@ import { Spin } from 'antd';
 import AppLayout from '@/layout';
 import styles from './index.less';
 
-const Home = lazy(() => import('@/view/home'));
+const Home = lazy(() => import('@/view/home/echarts'));
+const Page2 = lazy(() => import('@/view/page2'));
+const Page3 = lazy(() => import('@/view/page3'));
+const Page4 = lazy(() => import('@/view/page4'));
 
 const lazyLoad = (children: ReactNode, needSpin = true): ReactNode => {
   return (
@@ -29,6 +32,18 @@ const children = [
   {
     path: 'home',
     element: lazyLoad(<Home />),
+  },
+  {
+    path: 'page2',
+    element: lazyLoad(<Page2 />),
+  },
+  {
+    path: 'page3',
+    element: lazyLoad(<Page3 />),
+  },
+  {
+    path: 'page4',
+    element: lazyLoad(<Page4 />),
   },
   {
     path: '/',

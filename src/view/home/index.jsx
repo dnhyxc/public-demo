@@ -1,8 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import './index.css';
-import Guide from './guide'
+import Guide from './guide';
 const WeChatVoiceRecorder = () => {
-
   const steps = [
     {
       target: '.feature-1',
@@ -43,10 +42,10 @@ const WeChatVoiceRecorder = () => {
     },
   ];
   useEffect(() => {
-    setRun(true)
-  }, [])
+    setRun(true);
+  }, []);
 
-  const [run ,setRun] = useState(false)
+  const [run, setRun] = useState(false);
   return (
     <div id="mainApp" style={{ height: '100vh', background: '#fff' }}>
       {run && <Guide steps={steps} run={run} skipCb={() => setRun(false)} />}
@@ -56,9 +55,6 @@ const WeChatVoiceRecorder = () => {
       <div className="feature feature-4">功能区域 4</div>
       <div className="feature feature-5">功能区域 5</div>
       <div className="feature feature-6">功能区域 6</div>
-
-
-
 
       {/* <Joyride
         steps={steps}
