@@ -1,0 +1,192 @@
+.pageContainer {
+  background-color: #f0f2f5; // Light grey background
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+    Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+}
+
+.navBar {
+  background-color: #fff; // White navbar background as per image
+  // border-bottom: 1px solid #f0f0f0; // No border visible in this image for navbar
+  color: #333;
+  :global(.adm-nav-bar-title) {
+    font-size: 14px;
+    color: #666;
+  }
+  :global(.adm-nav-bar-left) {
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
+
+.tabsContainer {
+  background-color: #fff; // White tabs background
+  border-bottom: 1px solid #f0f0f0; // Separator line below tabs
+  :global(.adm-tabs-header) {
+    padding: 0 12px;
+  }
+  :global(.adm-tabs-tab) {
+    font-size: 15px;
+    color: #555;
+    padding: 10px 12px;
+  }
+  :global(.adm-tabs-tab-active) {
+    color: #333; // Active tab text color (blackish)
+    font-weight: bold;
+  }
+  :global(.adm-tabs-tab-line) {
+    background-color: #d94a54; // Reddish pink indicator for active tab
+    height: 3px;
+  }
+}
+
+.tabWithBadge {
+  position: relative;
+  padding-right: 5px;
+}
+
+.badge {
+  position: absolute;
+  right: -28px;
+  background-color: #ff4d4f;
+  color: white;
+  padding: 1px 5px;
+  border-radius: 8px;
+  font-size: 10px;
+  line-height: 1.2;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.badgeTop {
+  top: -8px;
+}
+
+.badgeBottom {
+  bottom: -8px;
+  background-color: #f76560; // Slightly different red for bottom badge
+}
+
+.customCard {
+  margin: 12px;
+  border-radius: 8px;
+  background-color: #fff; // Ensure card background is white
+  :global(.adm-card-header-title) {
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+  }
+  :global(.adm-card-body) {
+    padding: 12px;
+  }
+}
+
+.overviewGrid {
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.chartLegend {
+  font-size: 10px;
+  color: #555;
+  margin-top: 4px;
+  text-align: center;
+  .legendDot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-right: 3px;
+    vertical-align: middle;
+  }
+  .dotRed {
+    background-color: #d94a54;
+  }
+  .dotBlue {
+    background-color: #3b86ff;
+  }
+  .dotYellow {
+    background-color: #ffc42e;
+  }
+}
+
+.overviewDetails {
+  padding-left: 10px;
+}
+
+.detailItem {
+  display: flex;
+  align-items: center;
+  .detailIcon {
+    font-size: 20px;
+    color: #888;
+    margin-right: 8px;
+  }
+  .detailLabel {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 2px;
+  }
+  .detailValue {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+  }
+  .valueUnit {
+    font-size: 11px;
+    font-weight: normal;
+    color: #888;
+    margin-left: 2px;
+  }
+}
+
+.keyMetricsGrid {
+  border-top: 1px solid #f0f0f0;
+  padding-top: 12px;
+}
+
+.metricCard {
+  background-color: #f7f8fa; // Light grey background for metric cards
+  padding: 10px;
+  border-radius: 6px;
+  text-align: left; // Align text to left as per image
+}
+
+.metricLabel {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 6px;
+  min-height: 28px; // Ensure two lines of text fit
+}
+
+.metricValue {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.comparisonContainer {
+  font-size: 11px;
+  color: #888;
+  margin-bottom: 2px;
+  display: flex;
+  justify-content: space-between; // Spread out '同比' and value
+}
+
+.comparisonText {
+  // No specific style needed if space-between works
+}
+
+.comparisonValue {
+  font-weight: 500;
+}
+
+.positive {
+  color: #f5222d; // Red for positive/increase
+}
+
+.negative {
+  color: #52c41a; // Green for negative/decrease
+}

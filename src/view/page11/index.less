@@ -1,0 +1,134 @@
+.container {
+  background-color: #f0f2f5; // Light grey background similar to image
+  min-height: 100vh;
+}
+
+.tabs {
+  :global(.adm-tabs-header) {
+    border-bottom: none;
+    padding: 0 10px;
+    background-color: #fff; // White background for tabs header
+  }
+  :global(.adm-tabs-tab) {
+    font-size: 14px;
+    color: #666;
+    padding: 10px 12px;
+  }
+  :global(.adm-tabs-tab-active) {
+    color: #1677ff; // Active tab color
+    font-weight: bold;
+  }
+  :global(.adm-tabs-line) {
+    background-color: #1677ff; // Active tab underline color
+    height: 3px;
+    border-radius: 1.5px;
+    bottom: 0;
+  }
+}
+
+.activeTab {
+  // Styles for the active tab content if needed
+}
+
+.content {
+  padding: 12px;
+}
+
+.chartSection {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.sectionTitle {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.chartArea {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.chartContainer {
+  width: 100%;
+  height: 150px; // Adjust height as needed
+}
+
+.legendContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%; // To align items vertically in the grid cell
+  padding-left: 10px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: #555;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.legendMarker {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  margin-right: 6px;
+}
+
+.legendText {
+  flex-grow: 1;
+}
+
+.legendValue {
+  color: #333;
+  font-weight: 500;
+}
+
+.statsContainer {
+  padding-top: 10px;
+  border-top: 1px solid #f0f0f0; // Separator line
+}
+
+.statItem {
+  text-align: center;
+  .statValue {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    .statUnit {
+      font-size: 12px;
+      margin-left: 2px;
+      font-weight: normal;
+    }
+  }
+  .statLabel {
+    font-size: 12px;
+    color: #888;
+    margin-top: 4px;
+  }
+}
+
+// Custom NavBar styles
+:global(.adm-nav-bar) {
+  background-color: #f0f2f5; // Match background
+  border-bottom: none;
+  :global(.adm-nav-bar-title) {
+    font-size: 17px;
+    font-weight: 500;
+  }
+  :global(.adm-nav-bar-back-arrow) {
+    font-size: 18px;
+  }
+}
