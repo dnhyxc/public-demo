@@ -9,6 +9,20 @@ const Page4: React.FC = () => {
   let chartInstance1: echarts.ECharts | null = null;
   let chartInstance2: echarts.ECharts | null = null;
 
+  const setLabelBeforeLine = (color: string) => {
+    return {
+      formatter: '{line|}{name|{b}}\n{value|{c}} {unit|人}',
+      rich: {
+        line: {
+          width: 3,
+          height: 12,
+          borderRadius: 2,
+          backgroundColor: color,
+        },
+      },
+    };
+  };
+
   const getChartOption = (title: string) => ({
     tooltip: {
       show: false,
@@ -38,28 +52,26 @@ const Page4: React.FC = () => {
           {
             value: 325,
             name: '校招',
+            lineColor: '#4B7BE5',
             line: {
               backgroundColor: '#4B7BE5', // 竖线的颜色,
             },
             itemStyle: {
               color: '#4B7BE5',
             },
+            label: setLabelBeforeLine('#4B7BE5'),
           },
           {
             value: 272,
             name: '社招',
-            itemStyle: { color: '#E86452', backgroundColor: '#E86452' },
-            line: {
-              backgroundColor: '#E86452', // 竖线的颜色,
-            },
+            itemStyle: { color: '#E86452' },
+            label: setLabelBeforeLine('#E86452'),
           },
           {
             value: 150,
             name: '编外转正',
             itemStyle: { color: '#d3bc63' },
-            line: {
-              backgroundColor: '#d3bc63', // 竖线的颜色,
-            },
+            label: setLabelBeforeLine('#d3bc63'),
           },
         ],
         label: {
@@ -68,12 +80,7 @@ const Page4: React.FC = () => {
           // 标签对齐方式，对齐到边缘
           alignTo: 'edge',
           // 标签格式化，使用富文本显示名称和时间
-          formatter: '{line|}{name|{b}}\n{value|{c}} {unit|人}',
-          // formatter: (params: any) => {
-          //   const { name } = params;
-          //   console.log('params', params);
-          //   return `{a|{a}}{abg|}{line|}{name|${name}}\n{value|${params.value}} {unit|人}`;
-          // },
+          // formatter: '{line|}{name|{b}}\n{value|{c}} {unit|人}',
           // 标签之间的最小间距
           minMargin: 5,
           // 标签与图形边缘的距离
@@ -83,12 +90,6 @@ const Page4: React.FC = () => {
           // 添加竖线标识
           // 只给name设置左边线
           rich: {
-            line: {
-              width: 3, // 竖线的宽度
-              height: 12, // 竖线的高度
-              borderRadius: 2, // 圆角
-              backgroundColor: true, // 竖线的颜色,
-            },
             // 名称文本样式
             name: {
               fontSize: 14,
@@ -113,16 +114,16 @@ const Page4: React.FC = () => {
           // 第二段引导线长度，连接到文字
           length2: 0,
           // 控制引导线与圆形边缘的最小距离
-          minTurnAngle: 10,
+          minTurnAngle: 50,
           // 控制引导线的平滑度
           // smooth: 0.2,
-          maxSurfaceAngle: 80,
+          // 控制引导线与圆形表面的最大角度
+          maxSurfaceAngle: 60,
         },
         labelLayout(params: {
           labelRect: { x: number; width: number };
           labelLinePoints: number[][];
         }) {
-          console.log(params, 'labelRect');
           const isLeft = params.labelRect.x < chartInstance1!.getWidth() / 2;
           const points = params.labelLinePoints;
 
