@@ -31,7 +31,7 @@ const Page4: React.FC = () => {
       // formatter: '{a} <br/>{b}: {c} ({d}%)',
     },
     title: {
-      text: title,
+      // text: title,
       left: '-5px',
       top: '-5px',
       textStyle: {
@@ -47,7 +47,7 @@ const Page4: React.FC = () => {
     series: [
       {
         type: 'pie',
-        radius: ['35%', '45%'],
+        radius: ['50px', '60px'],
         center: ['50%', '50%'],
         data: [
           {
@@ -111,11 +111,11 @@ const Page4: React.FC = () => {
         },
         labelLine: {
           // 第一段引导线长度，从圆形边缘开始
-          length: 30,
+          length: 35,
           // 第二段引导线长度，连接到文字
           length2: 0,
           // 控制引导线与圆形边缘的最小距离
-          minTurnAngle: 50,
+          minTurnAngle: 10,
           // 控制引导线的平滑度
           // smooth: 0.2,
           // 控制引导线与圆形表面的最大角度
@@ -155,7 +155,7 @@ const Page4: React.FC = () => {
       {
         type: 'text',
         left: 'center',
-        top: '42%', // 调整位置使其在环形内部居中
+        top: '40%', // 调整位置使其在环形内部居中
         style: {
           text: '453', // 总人数，可以动态计算 sum(data.value)
           textAlign: 'center',
