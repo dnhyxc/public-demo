@@ -23,6 +23,7 @@ const Page4: React.FC = () => {
         fontSize: 16,
         fontWeight: 'bold',
         color: '#333',
+        padding: [0, 0, 50, 0], // 上右下左
       },
     },
     legend: {
@@ -225,7 +226,7 @@ const Page4: React.FC = () => {
 
       <div className={styles.chartsContainer}>
         <div className={styles.chartWrapper}>
-          <div ref={chartRef1} style={{ height: '300px', width: '100%' }} />
+          <div ref={chartRef1} style={{ height: '250px', width: '100%' }} />
           {/* <div className={styles.centerText}>
             <span className={styles.number}>453</span>
             <span className={styles.label}>总人数</span>
@@ -244,7 +245,7 @@ const Page4: React.FC = () => {
         </div>
 
         <div className={styles.chartWrapper}>
-          <div ref={chartRef2} style={{ height: '300px', width: '100%' }} />
+          <div ref={chartRef2} style={{ height: '250px', width: '100%' }} />
           {/* <div className={styles.centerText}>
             <span className={styles.number}>453</span>
             <span className={styles.label}>总人数</span>
