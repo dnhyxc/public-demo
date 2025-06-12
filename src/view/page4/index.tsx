@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import * as echarts from 'echarts';
+// @ts-ignore
+import echarts from './echarts-import';
 import styles from './index.less';
 
 const Page4: React.FC = () => {
