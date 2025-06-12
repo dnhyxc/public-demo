@@ -110,7 +110,7 @@ const Page4: React.FC = () => {
         },
         labelLine: {
           // 第一段引导线长度，从圆形边缘开始
-          length: 25,
+          length: 30,
           // 第二段引导线长度，连接到文字
           length2: 0,
           // 控制引导线与圆形边缘的最小距离
@@ -126,15 +126,21 @@ const Page4: React.FC = () => {
         }) {
           const isLeft = params.labelRect.x < chartInstance1!.getWidth() / 2;
           const points = params.labelLinePoints;
-
-          // 调整引导线的起始点，使其距离圆形边缘有一定间距
-          // points[0] = points[0].map((p) => p * 1.1);
-
+          // 计算第一个点到第二个点的方向向量
+          const dx = points[1][0] - points[0][0];
+          const dy = points[1][1] - points[0][1];
+          // 计算向量的长度
+          const length = Math.sqrt(dx * dx + dy * dy);
+          // 单位向量
+          const ux = dx / length;
+          const uy = dy / length;
+          // 沿着方向向量移动起始点10像素
+          points[0][0] += ux * 10;
+          points[0][1] += uy * 10;
           // 调整文字连接点的位置
           points[2][0] = isLeft
             ? params.labelRect.x
             : params.labelRect.x + params.labelRect.width;
-
           return {
             labelLinePoints: points,
           };
