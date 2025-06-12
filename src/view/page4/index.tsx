@@ -1,19 +1,27 @@
-import React from 'react';
-import ReactECharts from 'echarts-for-react';
+import React, { useEffect, useRef } from 'react';
+import * as echarts from 'echarts';
 import styles from './index.less';
 
 const Page4: React.FC = () => {
+  const chartRef1 = useRef<HTMLDivElement | null>(null);
+  const chartRef2 = useRef<HTMLDivElement | null>(null);
+
+  let chartInstance1: echarts.ECharts | null = null;
+  let chartInstance2: echarts.ECharts | null = null;
+
   const getChartOption = (title: string) => ({
     tooltip: {
-      trigger: 'item',
+      show: false,
+      // trigger: 'item',
+      // formatter: '{a} <br/>{b}: {c} ({d}%)',
     },
     title: {
       text: title,
-      left: '20px',
-      top: '20px',
+      left: '-5px',
+      top: '-5px',
       textStyle: {
-        fontSize: 14,
-        fontWeight: 'normal',
+        fontSize: 16,
+        fontWeight: 'bold',
         color: '#333',
       },
     },
@@ -23,31 +31,183 @@ const Page4: React.FC = () => {
     series: [
       {
         type: 'pie',
-        radius: ['65%', '80%'],
-        center: ['50%', '55%'],
+        radius: ['35%', '45%'],
+        center: ['50%', '50%'],
         data: [
-          { value: 325, name: '校招', itemStyle: { color: '#4B7BE5' } },
-          { value: 272, name: '社招', itemStyle: { color: '#E86452' } },
+          {
+            value: 325,
+            name: '校招',
+            line: {
+              backgroundColor: '#4B7BE5', // 竖线的颜色,
+            },
+            itemStyle: {
+              color: '#4B7BE5',
+            },
+          },
+          {
+            value: 272,
+            name: '社招',
+            itemStyle: { color: '#E86452', backgroundColor: '#E86452' },
+            line: {
+              backgroundColor: '#E86452', // 竖线的颜色,
+            },
+          },
+          {
+            value: 150,
+            name: '编外转正',
+            itemStyle: { color: '#d3bc63' },
+            line: {
+              backgroundColor: '#d3bc63', // 竖线的颜色,
+            },
+          },
         ],
         label: {
-          show: false,
+          // 标签的位置，设置为外部
+          position: 'outside',
+          // 标签对齐方式，对齐到边缘
+          alignTo: 'edge',
+          // 标签格式化，使用富文本显示名称和时间
+          formatter: '{line|}{name|{b}}\n{value|{c}} {unit|人}',
+          // formatter: (params: any) => {
+          //   const { name } = params;
+          //   console.log('params', params);
+          //   return `{a|{a}}{abg|}{line|}{name|${name}}\n{value|${params.value}} {unit|人}`;
+          // },
+          // 标签之间的最小间距
+          minMargin: 5,
+          // 标签与图形边缘的距离
+          edgeDistance: 15,
+          // 标签文本的行高
+          lineHeight: 25,
+          // 添加竖线标识
+          // 只给name设置左边线
+          rich: {
+            line: {
+              width: 3, // 竖线的宽度
+              height: 12, // 竖线的高度
+              borderRadius: 2, // 圆角
+              backgroundColor: true, // 竖线的颜色,
+            },
+            // 名称文本样式
+            name: {
+              fontSize: 14,
+              color: '#333',
+              padding: [0, 0, 0, 5], // 上右下左
+            },
+            // 数值文本样式
+            value: {
+              fontSize: 16,
+              fontWeight: 'bold',
+              color: '#333',
+            },
+            unit: {
+              fontSize: 14,
+              color: '#999',
+            },
+          },
+        },
+        labelLine: {
+          // 第一段引导线长度，从圆形边缘开始
+          length: 25,
+          // 第二段引导线长度，连接到文字
+          length2: 0,
+          // 控制引导线与圆形边缘的最小距离
+          minTurnAngle: 10,
+          // 控制引导线的平滑度
+          // smooth: 0.2,
+          maxSurfaceAngle: 80,
+        },
+        labelLayout(params: {
+          labelRect: { x: number; width: number };
+          labelLinePoints: number[][];
+        }) {
+          console.log(params, 'labelRect');
+          const isLeft = params.labelRect.x < chartInstance1!.getWidth() / 2;
+          const points = params.labelLinePoints;
+
+          // 调整引导线的起始点，使其距离圆形边缘有一定间距
+          // points[0] = points[0].map((p) => p * 1.1);
+
+          // 调整文字连接点的位置
+          points[2][0] = isLeft
+            ? params.labelRect.x
+            : params.labelRect.x + params.labelRect.width;
+
+          return {
+            labelLinePoints: points,
+          };
         },
         emphasis: {
           disabled: true,
         },
       },
     ],
+    graphic: [
+      {
+        type: 'text',
+        left: 'center',
+        top: '42%', // 调整位置使其在环形内部居中
+        style: {
+          text: '453', // 总人数，可以动态计算 sum(data.value)
+          textAlign: 'center',
+          fill: '#333',
+          fontSize: 25,
+          fontWeight: 'bold',
+        },
+      },
+      {
+        type: 'text',
+        left: 'center',
+        top: '55%', // 调整位置使其在环形内部居中
+        style: {
+          text: '总人数',
+          textAlign: 'center',
+          fill: '#666',
+          fontSize: 14,
+        },
+      },
+    ],
   });
+
+  useEffect(() => {
+    if (chartRef1.current) {
+      chartInstance1 = echarts.init(chartRef1.current);
+      const option = getChartOption('本年度新招聘员工人数');
+      chartInstance1.setOption(option);
+    }
+
+    if (chartRef2.current) {
+      chartInstance2 = echarts.init(chartRef2.current);
+      chartInstance2.setOption(getChartOption('本年度离职员工人数'));
+    }
+
+    const resizeCharts = () => {
+      chartInstance1?.resize();
+      chartInstance2?.resize();
+    };
+
+    window.addEventListener('resize', resizeCharts);
+
+    return () => {
+      chartInstance1?.dispose();
+      chartInstance2?.dispose();
+      window.removeEventListener('resize', resizeCharts);
+    };
+  }, []);
 
   const renderStats = () => (
     <div className={styles.statsContainer}>
       <div className={styles.statItem}>
         <span className={styles.label}>重点院校人数</span>
-        <span className={styles.value}>29人</span>
+        <span className={styles.value}>
+          29<span className={styles.unit}>人</span>
+        </span>
       </div>
       <div className={styles.statItem}>
-        <span className={styles.label}>985/211</span>
-        <span className={styles.value}>3人</span>
+        <span className={styles.label}>Stem占比</span>
+        <span className={styles.value}>
+          3<span className={styles.unit}>%</span>
+        </span>
       </div>
       <div className={styles.statItem}>
         <span className={styles.label}>男女比例</span>
@@ -65,15 +225,12 @@ const Page4: React.FC = () => {
 
       <div className={styles.chartsContainer}>
         <div className={styles.chartWrapper}>
-          <ReactECharts
-            option={getChartOption('本年度新招聘员工人数')}
-            style={{ height: '300px' }}
-          />
-          <div className={styles.centerText}>
+          <div ref={chartRef1} style={{ height: '300px', width: '100%' }} />
+          {/* <div className={styles.centerText}>
             <span className={styles.number}>453</span>
             <span className={styles.label}>总人数</span>
-          </div>
-          <div className={styles.chartLabels}>
+          </div> */}
+          {/* <div className={styles.chartLabels}>
             <div className={styles.labelItem}>
               <span className={styles.dot} style={{ backgroundColor: '#4B7BE5' }} />
               <span className={styles.text}>校招 325人</span>
@@ -82,20 +239,17 @@ const Page4: React.FC = () => {
               <span className={styles.dot} style={{ backgroundColor: '#E86452' }} />
               <span className={styles.text}>社招 272人</span>
             </div>
-          </div>
+          </div> */}
           {renderStats()}
         </div>
 
         <div className={styles.chartWrapper}>
-          <ReactECharts
-            option={getChartOption('本年度离职员工人数')}
-            style={{ height: '300px' }}
-          />
-          <div className={styles.centerText}>
+          <div ref={chartRef2} style={{ height: '300px', width: '100%' }} />
+          {/* <div className={styles.centerText}>
             <span className={styles.number}>453</span>
             <span className={styles.label}>总人数</span>
-          </div>
-          <div className={styles.chartLabels}>
+          </div> */}
+          {/* <div className={styles.chartLabels}>
             <div className={styles.labelItem}>
               <span className={styles.dot} style={{ backgroundColor: '#4B7BE5' }} />
               <span className={styles.text}>校招 325人</span>
@@ -104,7 +258,7 @@ const Page4: React.FC = () => {
               <span className={styles.dot} style={{ backgroundColor: '#E86452' }} />
               <span className={styles.text}>社招 272人</span>
             </div>
-          </div>
+          </div> */}
           {renderStats()}
         </div>
       </div>
